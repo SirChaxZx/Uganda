@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Uganda im Januar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F2F4EE; --paper:#FFFFFF; --ink:#18241C; --muted:#56635A; --line:#D6DCD2;
+  --leaf:#2E6A3C; --leaf-soft:#E1ECDF; --lake:#2B5E78; --lake-soft:#DCE8EE;
+  --sun:#F2B705; --sun-soft:#FBF0C6; --soil:#9C3B1B;
+  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body:"Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121A15; --paper:#1A241E; --ink:#E9EFE7; --muted:#A5B3A8; --line:#2E3B33;
+    --leaf:#7BC08A; --leaf-soft:#20352A; --lake:#84B9D3; --lake-soft:#1B2F3A;
+    --sun:#F2C230; --sun-soft:#3A3217; --soil:#E08560;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121A15; --paper:#1A241E; --ink:#E9EFE7; --muted:#A5B3A8; --line:#2E3B33;
+  --leaf:#7BC08A; --leaf-soft:#20352A; --lake:#84B9D3; --lake-soft:#1B2F3A;
+  --sun:#F2C230; --sun-soft:#3A3217; --soil:#E08560;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.6}
+img,svg{max-width:100%}
+a{color:var(--lake)}
+:focus-visible{outline:3px solid var(--sun);outline-offset:2px;border-radius:4px}
+.wrap{max-width:62rem;margin:0 auto;padding:0 1.25rem}
+h1,h2,h3{font-family:var(--display);line-height:1.1;margin:0}
+h2{font-size:clamp(1.7rem,4vw,2.4rem);font-weight:800;margin-bottom:.6rem}
+h3{font-size:1.2rem;font-weight:700}
+p{margin:.4rem 0 .9rem;max-width:40em}
+section{padding:3rem 0;border-top:1px solid var(--line)}
+.lead{color:var(--muted);max-width:36em}
+
+/* nav */
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:.8rem;padding-top:.55rem;padding-bottom:.55rem}
+nav .links{display:flex;gap:1.1rem;overflow-x:auto;white-space:nowrap;flex:1;min-width:0;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding:.3rem 1.2rem .3rem 0;-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent);mask-image:linear-gradient(90deg,#000 85%,transparent)}
+nav .links::-webkit-scrollbar{display:none}
+nav a{color:var(--ink);text-decoration:none;font-weight:700;font-size:.95rem}
+nav a:hover{color:var(--leaf)}
+nav a.cta{color:var(--leaf)}
+
+/* hero */
+.hero{padding:2.5rem 0 1rem}
+.hero h1{font-size:clamp(2.6rem,9vw,5.4rem);font-weight:800;letter-spacing:-.02em}
+.hero h1 .sub{display:block;font-weight:500;font-size:.42em;letter-spacing:0;color:var(--muted);margin-top:.5rem}
+.map{margin:1.5rem 0 0;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:.5rem;overflow-x:auto}
+.map svg{display:block;width:100%;height:auto}
+.map .portrait{display:none}
+@media (max-width:620px){.map .landscape{display:none}.map .portrait{display:block;max-width:26rem;margin:0 auto}}
+.map text{font-family:var(--display)}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:1rem;margin-top:1.4rem}
+.facts div{border-left:4px solid var(--sun);padding:.2rem 0 .2rem .8rem}
+.facts b{display:block;font-family:var(--display);font-size:1.15rem}
+.facts small{color:var(--muted);font-size:.95rem}
+
+/* rules */
+.split{display:grid;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));gap:1.2rem;margin-top:1rem}
+.box{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:1.2rem 1.3rem}
+.box.host{border-top:6px solid var(--leaf)}
+.box.own{border-top:6px solid var(--lake)}
+.box ul{margin:.6rem 0 0;padding-left:1.1rem}
+.box li{margin:.35rem 0}
+.note{background:var(--sun-soft);border-radius:12px;padding:.9rem 1.1rem;margin-top:1.2rem;max-width:44em}
+
+/* flights */
+.flight{display:grid;grid-template-columns:auto 1fr;gap:.2rem 1rem;align-items:baseline}
+.flight .code{font-family:var(--display);font-weight:800;font-size:1.9rem;color:var(--lake)}
+.fl{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:1.2rem 1.3rem;margin-top:1.2rem}
+.fl-head .code{font-family:var(--display);font-weight:800;font-size:1.9rem;color:var(--lake);line-height:1}
+.fl-head{display:flex;gap:1rem;align-items:flex-start}
+.fl-head p{margin:.3rem 0 .4rem;color:var(--muted)}
+.fl table{width:100%;border-collapse:collapse;margin-top:1rem;font-size:.97rem}
+.fl caption{text-align:left;font-family:var(--display);font-weight:700;padding-bottom:.3rem}
+.fl td{padding:.45rem .5rem .45rem 0;border-top:1px solid var(--line);vertical-align:top}
+.fl td:nth-child(2){font-weight:700;white-space:nowrap;color:var(--lake)}
+.fl td:first-child{white-space:nowrap;color:var(--muted)}
+.hint{font-size:.93rem;color:var(--muted);margin:.4rem 0 0}
+@media (max-width:560px){.fl td{display:block;border-top:0;padding:.1rem 0}.fl tr{display:block;border-top:1px solid var(--line);padding:.4rem 0}}
+.ph{background:var(--sun-soft);border:1px dashed var(--sun);border-radius:6px;padding:0 .35rem;font-style:italic}
+
+/* timeline */
+.days{list-style:none;margin:1.2rem 0 0;padding:0;position:relative}
+.days::before{content:"";position:absolute;left:4.6rem;top:.4rem;bottom:.4rem;width:3px;background:linear-gradient(var(--lake),var(--leaf))}
+.day{display:grid;grid-template-columns:4.1rem 1fr;gap:1.4rem;padding:.9rem 0}
+.day .when{font-family:var(--display);text-align:right;line-height:1.1}
+.day .when b{display:block;font-size:1.35rem}
+.day .when small{color:var(--muted);font-size:.85rem}
+.day .what{position:relative}
+.day .what::before{content:"";position:absolute;left:-1.25rem;top:.45rem;width:13px;height:13px;border-radius:50%;background:var(--paper);border:3px solid var(--leaf)}
+.day.travel .what::before{border-color:var(--lake)}
+.day h3{margin-bottom:.25rem}
+.day p{margin:.2rem 0 .4rem;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem}
+.chip{font-size:.85rem;padding:.15rem .6rem;border-radius:99px;background:var(--leaf-soft);color:var(--ink)}
+.chip.fix{background:var(--lake-soft)}
+
+/* options */
+.group{margin-top:2rem}
+.group > p{color:var(--muted)}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:1rem;margin-top:.8rem}
+.opt{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:1rem 1.1rem}
+.opt h3{font-size:1.08rem}
+.opt p{font-size:.97rem;margin:.35rem 0 .6rem}
+.meta{display:flex;flex-wrap:wrap;gap:.35rem}
+.meta span{font-size:.8rem;border:1px solid var(--line);border-radius:6px;padding:.05rem .45rem;color:var(--muted)}
+.meta .kids{border-color:var(--leaf);color:var(--leaf)}
+.meta .nokids{border-color:var(--soil);color:var(--soil)}
+
+/* checklist */
+.check{columns:2 20rem;column-gap:2rem;margin-top:1rem}
+.check .item{break-inside:avoid;display:flex;gap:.7rem;padding:.55rem 0;border-bottom:1px solid var(--line)}
+.check input{width:1.2rem;height:1.2rem;margin-top:.25rem;accent-color:var(--leaf);flex:none}
+.check label b{display:block}
+.check label span{color:var(--muted);font-size:.95rem}
+.check h3{column-span:all;margin:1.4rem 0 .3rem;color:var(--leaf)}
+.check h3:first-child{margin-top:0}
+
+/* form */
+form{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:1.4rem;margin-top:1rem}
+fieldset{border:0;padding:0;margin:0 0 1.4rem}
+legend{font-family:var(--display);font-weight:700;font-size:1.1rem;margin-bottom:.5rem}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:.9rem}
+.field label{display:block;font-weight:700;font-size:.95rem;margin-bottom:.25rem}
+input[type=text],input[type=number],input[type=date],select,textarea{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:.55rem .7rem}
+textarea{min-height:5rem;resize:vertical}
+.pills{display:flex;flex-wrap:wrap;gap:.5rem}
+.pills label{display:flex;align-items:center;gap:.45rem;background:var(--bg);border:1px solid var(--line);border-radius:99px;padding:.35rem .8rem;cursor:pointer;font-size:.95rem}
+.pills input{accent-color:var(--leaf)}
+.pills label:has(input:checked){background:var(--leaf-soft);border-color:var(--leaf)}
+.actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:.5rem}
+button,.btn{font:inherit;font-weight:700;border:0;border-radius:12px;padding:.75rem 1.2rem;cursor:pointer;text-decoration:none;display:inline-block}
+.btn-main{background:var(--leaf);color:#fff}
+.btn-sec{background:var(--lake-soft);color:var(--ink)}
+#out{display:none;margin-top:1.2rem}
+#out pre{white-space:pre-wrap;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:1rem;font-family:var(--body);font-size:.95rem;max-height:22rem;overflow:auto}
+#status{color:var(--leaf);font-weight:700;min-height:1.4em}
+
+footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}
+@media (max-width:560px){
+  body{font-size:1rem}
+  section{padding:2.2rem 0}
+  .hero{padding-top:1.6rem}
+  .box,.fl,.opt{padding:1rem}
+  .fl-head{flex-direction:column;gap:.2rem}
+  .fl-head .code{font-size:1.5rem !important}
+  .wa{display:flex;justify-content:center;width:100%}
+  .check{columns:1}
+  .days::before{left:3.6rem}
+  .day{grid-template-columns:3.1rem 1fr}
+  .day .when b{font-size:1.1rem}
+}
+
+html[lang="en"] .de{display:none!important}
+html[lang="de"] .en{display:none!important}
+.lang{display:flex;gap:.25rem;flex:none}
+.lang button{font:inherit;font-weight:700;font-size:.9rem;min-height:2.2rem;min-width:2.6rem;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:8px;padding:.2rem .55rem;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--leaf);border-color:var(--leaf);color:#fff}
+.wa{display:inline-flex;align-items:center;gap:.6rem;background:#1F8F4E;color:#fff;text-decoration:none;font-weight:700;font-size:1.1rem;border-radius:14px;padding:.9rem 1.4rem;margin-top:.6rem}
+.wa:hover{background:#17773F}
+.wa svg{width:1.4rem;height:1.4rem;flex:none}
+#antwort{background:var(--leaf-soft)}
+</style>
+</head>
+<body>
+
+<nav aria-label="Navigation">
+  <div class="wrap">
+   <div class="links">
+    <a href="#rahmen"><span class="de">So läuft es</span><span class="en">How it works</span></a>
+    <a href="#fluege"><span class="de">Flüge</span><span class="en">Flights</span></a>
+    <a href="#plan"><span class="de">Tagesplan</span><span class="en">Itinerary</span></a>
+    <a href="#bausteine"><span class="de">Ausflüge</span><span class="en">Trips</span></a>
+    <a href="#schlafen"><span class="de">Schlafen</span><span class="en">Where to sleep</span></a>
+    <a href="#checkliste"><span class="de">Checkliste</span><span class="en">Checklist</span></a>
+    <a href="#antwort" class="cta"><span class="de">Dabei sein</span><span class="en">Join us</span></a>
+   </div>
+    <div class="lang" role="group" aria-label="Sprache / Language">
+      <button type="button" data-lang="de" aria-pressed="true">DE</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <h1><span class="de">Uganda im Januar</span><span class="en">Uganda in January</span><span><span class="sub"><span class="de">Zehn Tage zwischen Kampala, dem Äquator und unserem Haus bei Mbarara</span><span class="en">Ten days between Kampala, the equator and our house near Mbarara</span></span></span></h1>
+    <p class="lead" style="margin-top:1.2rem"><span class="de">Eigentlich wollten wir nur ein paar Familiendinge in Uganda klären. Jetzt kommt ihr mit, und darüber freuen wir uns riesig. Hier steht der gemeinsame Rahmen. Wie ihr anreist und was ihr vor Ort macht, entscheidet ihr selbst.</span><span class="en">We were only planning to sort out a few family matters in Uganda. Now you're coming along, and we couldn't be happier. Here's the shared plan. How you get there and what you do once you're there is up to you.</span></p>
+
+    <div class="map" role="img" aria-label="Route: Entebbe, Kampala, Äquator / equator, Masaka, Lake Mburo, Mbarara, Serena">
+      <svg class="landscape" viewBox="0 0 720 330" xmlns="http://www.w3.org/2000/svg">
+        <path d="M430 200 C470 170 560 175 610 200 C660 225 690 270 650 305 C600 330 470 325 430 290 C400 262 405 225 430 200Z" fill="var(--lake-soft)"/>
+        <text class="de" x="555" y="262" font-size="15" fill="var(--lake)" font-weight="700">Viktoriasee</text>
+        <text class="en" x="545" y="262" font-size="15" fill="var(--lake)" font-weight="700">Lake Victoria</text>
+        <line x1="20" y1="150" x2="700" y2="150" stroke="var(--sun)" stroke-width="2" stroke-dasharray="7 6"/>
+        <text class="de" x="24" y="142" font-size="13" fill="var(--muted)">Äquator</text>
+        <text class="en" x="24" y="142" font-size="13" fill="var(--muted)">Equator</text>
+        <path d="M545 85 C520 110 470 140 440 150 C400 162 370 175 340 205 C300 240 250 250 205 262 C180 270 160 272 140 272" fill="none" stroke="var(--leaf)" stroke-width="4" stroke-linecap="round"/>
+        <path d="M545 85 C555 110 555 150 520 188" fill="none" stroke="var(--lake)" stroke-width="3" stroke-dasharray="3 7" stroke-linecap="round"/>
+        <g font-size="14" fill="var(--ink)">
+          <circle cx="545" cy="85" r="9" fill="var(--paper)" stroke="var(--leaf)" stroke-width="4"/>
+          <text x="562" y="80" font-weight="800">Kampala</text>
+          <text class="de" x="562" y="97" fill="var(--muted)" font-size="12">Tag 2 bis 3</text>
+          <text class="en" x="562" y="97" fill="var(--muted)" font-size="12">Days 2 to 3</text>
+          <circle cx="440" cy="150" r="7" fill="var(--sun)"/>
+          <text x="400" y="125" font-weight="700">Kayabwe</text>
+          <circle cx="340" cy="205" r="6" fill="var(--paper)" stroke="var(--leaf)" stroke-width="3"/>
+          <text x="352" y="222">Masaka</text>
+          <circle cx="235" cy="252" r="6" fill="var(--paper)" stroke="var(--leaf)" stroke-width="3"/>
+          <text x="210" y="238">Lake Mburo</text>
+          <circle cx="140" cy="272" r="11" fill="var(--leaf)"/>
+          <text x="60" y="305" font-weight="800">Mbarara</text>
+          <text class="de" x="136" y="305" fill="var(--muted)" font-size="12">Tag 4 bis 8, unser Haus</text>
+          <text class="en" x="136" y="305" fill="var(--muted)" font-size="12">Days 4 to 8, our house</text>
+          <circle cx="520" cy="188" r="7" fill="var(--paper)" stroke="var(--lake)" stroke-width="3"/>
+          <text class="de" x="430" y="205" font-size="13">Serena, Tag 9 bis 10</text>
+          <text class="en" x="430" y="205" font-size="13">Serena, days 9 to 10</text>
+          <text x="590" y="178" font-size="13" fill="var(--muted)">Entebbe ✈</text>
+        </g>
+      </svg>
+      <svg class="portrait" viewBox="0 0 360 430" xmlns="http://www.w3.org/2000/svg">
+        <path d="M215 175 C250 150 320 160 345 200 C365 240 360 320 320 345 C280 370 225 350 205 310 C190 275 190 205 215 175Z" fill="var(--lake-soft)"/>
+        <text class="de" x="228" y="290" font-size="17" fill="var(--lake)" font-weight="700">Viktoria-</text>
+        <text class="de" x="248" y="310" font-size="17" fill="var(--lake)" font-weight="700">see</text>
+        <text class="en" x="232" y="290" font-size="17" fill="var(--lake)" font-weight="700">Lake</text>
+        <text class="en" x="232" y="310" font-size="17" fill="var(--lake)" font-weight="700">Victoria</text>
+        <line x1="10" y1="140" x2="350" y2="140" stroke="var(--sun)" stroke-width="2" stroke-dasharray="7 6"/>
+        <text class="de" x="12" y="132" font-size="15" fill="var(--muted)">Äquator</text>
+        <text class="en" x="12" y="132" font-size="15" fill="var(--muted)">Equator</text>
+        <path d="M270 55 C255 90 225 125 205 140 C185 160 170 190 160 220 C145 255 120 280 100 300 C85 320 70 335 60 350" fill="none" stroke="var(--leaf)" stroke-width="5" stroke-linecap="round"/>
+        <path d="M270 55 C290 90 285 140 250 180" fill="none" stroke="var(--lake)" stroke-width="3.5" stroke-dasharray="3 8" stroke-linecap="round"/>
+        <g font-size="17" fill="var(--ink)">
+          <circle cx="270" cy="55" r="10" fill="var(--paper)" stroke="var(--leaf)" stroke-width="4"/>
+          <text x="170" y="40" font-weight="800">Kampala</text>
+          <text class="de" x="170" y="60" fill="var(--muted)" font-size="14">Tag 2 bis 3</text>
+          <text class="en" x="170" y="60" fill="var(--muted)" font-size="14">Days 2 to 3</text>
+          <circle cx="205" cy="140" r="8" fill="var(--sun)"/>
+          <text x="98" y="165" font-weight="700">Kayabwe</text>
+          <circle cx="160" cy="220" r="7" fill="var(--paper)" stroke="var(--leaf)" stroke-width="3"/>
+          <text x="80" y="226">Masaka</text>
+          <circle cx="100" cy="300" r="7" fill="var(--paper)" stroke="var(--leaf)" stroke-width="3"/>
+          <text x="112" y="296" font-size="16">Lake Mburo</text>
+          <circle cx="60" cy="350" r="12" fill="var(--leaf)"/>
+          <text x="20" y="392" font-weight="800">Mbarara</text>
+          <text class="de" x="20" y="412" fill="var(--muted)" font-size="14">Tag 4 bis 8, unser Haus</text>
+          <text class="en" x="20" y="412" fill="var(--muted)" font-size="14">Days 4 to 8, our house</text>
+          <circle cx="250" cy="180" r="8" fill="var(--paper)" stroke="var(--lake)" stroke-width="3"/>
+          <text class="de" x="262" y="188" font-size="14">Serena</text>
+          <text class="en" x="262" y="188" font-size="14">Serena</text>
+          <text x="282" y="112" font-size="13" fill="var(--muted)">Entebbe ✈</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="facts">
+      <div><b><span class="de">9. bis 19. Januar</span><span class="en">9 to 19 January</span></b><small><span class="de">Hauptflug ab Nürnberg</span><span class="en">Main flight from Nuremberg</span></small></div>
+      <div><b><span class="de">16 Leute</span><span class="en">16 people</span></b><small><span class="de">davon 4 Kinder zwischen 2 und 8</span><span class="en">including 4 kids aged 2 to 8</span></small></div>
+      <div><b><span class="de">Flughafen Entebbe</span><span class="en">Entebbe Airport</span></b><small><span class="de">Ankunft und Abflug</span><span class="en">Arrival and departure</span></small></div>
+      <div><b><span class="de">Alles optional</span><span class="en">Everything optional</span></b><small><span class="de">außer der gemeinsamen Fahrt zum Haus</span><span class="en">except the drive to the house together</span></small></div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="rahmen">
+  <div class="wrap">
+    <h2><span class="de">So läuft es</span><span class="en">How it works</span></h2>
+    <p class="lead"><span class="de">Wir sind eure Gastgeber, keine Reiseleiter. Es gibt also kein Fähnchen, dem ihr hinterherlaufen müsst, und keinen Weckruf um sieben für das Pflichtprogramm. Jeder bucht seine Reise selbst, und wir sorgen dafür, dass ihr euch bei uns wie zu Hause fühlt.</span><span class="en">We're your hosts, not your tour guides. So there's no little flag to follow and no 7 a.m. wake-up call for the compulsory program. Everyone books their own trip, and we'll make sure you feel at home with us.</span></p>
+    <div class="split">
+      <div class="box host">
+        <h3><span class="de">Gemeinsam</span><span class="en">Together</span></h3>
+        <ul>
+          <li><span class="de">Transfer vom Flughafen, wenn ihr mit dem Hauptflug kommt</span><span class="en">Airport transfer if you take the main flight</span></li>
+          <li><span class="de">Fahrt von Kampala zum Haus und zurück an den Viktoriasee</span><span class="en">The drive from Kampala to the house and back to Lake Victoria</span></li>
+          <li><span class="de">Die Tage am Haus mit Essen, Garten und Grillfest</span><span class="en">The days at the house with food, garden and barbecue</span></li>
+        </ul>
+      </div>
+      <div class="box own">
+        <h3><span class="de">Frei nach Wahl</span><span class="en">Your choice</span></h3>
+        <ul>
+          <li><span class="de">Flug, Anreise und wie lange ihr bleibt</span><span class="en">Flights, travel and how long you stay</span></li>
+          <li><span class="de">Welche Ausflüge ihr macht</span><span class="en">Which trips you join</span></li>
+          <li><span class="de">Matratzenlager im Haus oder Hotel</span><span class="en">Mattress camp at the house or a hotel</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="note"><span class="de"><b>Zu den Fahrten:</b> Die Fahrer organisieren wir vor Ort. Wer vom gemeinsamen Plan abweicht (anderer Flug, anderer Ausflug, früher weg), braucht ein eigenes Auto oder eine eigene Fahrt. Sagt uns rechtzeitig Bescheid, dann klären wir das.</span><span class="en"><b>About getting around:</b> We organise the drivers locally. If you go off the shared plan (different flight, different trip, leaving early), you'll need your own car or ride. Just let us know in time and we'll sort it out.</span></div>
+    <p style="margin-top:1rem"><span class="de">Wir sind nicht bei jedem Ausflug dabei, weil wir in der Familie einiges zu erledigen haben. Die Fahrer kennen sich aus, ihr seid also gut aufgehoben.</span><span class="en">We won't be on every trip, as we have some family matters to take care of. The drivers know their way around, so you're in good hands.</span></p>
+  </div>
+</section>
+
+<section id="fluege">
+  <div class="wrap">
+    <h2><span class="de">Flüge</span><span class="en">Flights</span></h2>
+    <p class="lead"><span class="de">Am einfachsten wird es, wenn die meisten den gleichen Flug nehmen. Dann holt uns ein Transfer gemeinsam ab.</span><span class="en">It's easiest if most of us take the same flight. Then one transfer picks us all up.</span></p>
+
+    <div class="fl">
+      <div class="fl-head"><span class="code">NUE</span><div><h3><span class="de">Nürnberg über Istanbul mit Turkish Airlines</span><span class="en">Nuremberg via Istanbul with Turkish Airlines</span></h3><p><span class="de">Diesen Flug nehmen wir. Das ist der Hauptflug für die Gruppe.</span><span class="en">This is our flight and the main flight for the group.</span></p></div></div>
+      <table>
+        <caption><span class="de">Hinflug</span><span class="en">Outbound</span></caption>
+        <tr><td><span class="de">Sa 9.1.</span><span class="en">Sat 9 Jan</span></td><td><span class="de">Nürnberg</span><span class="en">Nuremberg</span> 10:50</td><td><span class="de">Umstieg in Istanbul</span><span class="en">Change in Istanbul</span></td><td>Entebbe 04:40 (<span class="de">So 10.1.</span><span class="en">Sun 10 Jan</span>)</td></tr>
+      </table>
+      <p class="hint"><span class="de">Reisedauer rund 16 Stunden.</span><span class="en">About 16 hours in total.</span></p>
+      <table>
+        <caption><span class="de">Rückflug</span><span class="en">Return</span></caption>
+        <tr><td><span class="de">Di 19.1.</span><span class="en">Tue 19 Jan</span></td><td>Entebbe 05:55</td><td><span class="de">Umstieg in Istanbul</span><span class="en">Change in Istanbul</span></td><td><span class="de">Nürnberg</span><span class="en">Nuremberg</span> 17:50</td></tr>
+      </table>
+      <p class="hint"><span class="de">Reisedauer rund 14 Stunden. Abfahrt vom Serena gegen 2:30 Uhr.</span><span class="en">About 14 hours in total. We leave the Serena around 2:30.</span></p>
+    </div>
+
+    <div class="fl">
+      <div class="fl-head"><span class="code">BRU</span><div><h3><span class="de">Brüssel mit Brussels Airlines</span><span class="en">Brussels with Brussels Airlines</span></h3><p><span class="de">Die Alternative mit Economy, Premium Economy und Business. Nach Brüssel kommt ihr am besten am Vortag oder mit einem frühen Zubringer, gebucht als ein Ticket.</span><span class="en">The alternative, with Economy, Premium Economy and Business. Get to Brussels the day before or on an early connecting flight booked on the same ticket.</span></p></div></div>
+      <table>
+        <caption><span class="de">Hinflug</span><span class="en">Outbound</span></caption>
+        <tr><td><span class="de">Sa 9.1.</span><span class="en">Sat 9 Jan</span></td><td><span class="de">Brüssel ca. 10:15</span><span class="en">Brussels approx. 10:15</span></td><td><span class="de">Halt in Kigali</span><span class="en">Stop in Kigali</span></td><td><span class="de">Entebbe ca. 22:55</span><span class="en">Entebbe approx. 22:55</span></td></tr>
+      </table>
+      <p class="hint"><span class="de">Ihr landet schon am Abend des 9.1., ein paar Stunden vor der Nürnberg-Gruppe. Bucht das Hotel in Kampala deshalb ab dieser Nacht, also eine Nacht mehr, und plant einen eigenen Transfer ein.</span><span class="en">You land on the evening of 9 Jan, a few hours before the Nuremberg group. So book the Kampala hotel from that night, one night extra, and plan your own transfer.</span></p>
+      <table>
+        <caption><span class="de">Rückflug, direkt</span><span class="en">Return, non-stop</span></caption>
+        <tr><td><span class="de">Di 19.1.</span><span class="en">Tue 19 Jan</span></td><td><span class="de">Entebbe ca. 00:05</span><span class="en">Entebbe approx. 00:05</span></td><td><span class="de">ohne Umstieg</span><span class="en">non-stop</span></td><td><span class="de">Brüssel ca. 06:40</span><span class="en">Brussels approx. 06:40</span></td></tr>
+      </table>
+      <p class="hint"><span class="de">Brussels Airlines fliegt nicht jeden Tag. Die Zeiten stammen aus dem bisherigen Winterflugplan. Bitte vor dem Buchen prüfen, ob an diesen Tagen geflogen wird.</span><span class="en">Brussels Airlines doesn't fly every day. These times are from the previous winter schedule, so please check the flight operates on these dates before booking.</span></p>
+    </div>
+    <div class="note"><span class="de">Wer woanders umsteigt oder zu einer anderen Zeit landet: kein Problem. Dann organisieren wir einen eigenen Transfer.</span><span class="en">Flying another route or landing at a different time? No problem, we'll arrange a separate transfer.</span></div>
+  </div>
+</section>
+
+<section id="plan">
+  <div class="wrap">
+    <h2><span class="de">Tagesplan</span><span class="en">Itinerary</span></h2>
+    <p class="lead"><span class="de">Blau heißt: Alle fahren gemeinsam. Grün heißt: Ihr wählt.</span><span class="en">Blue means we all go together. Green means it's your choice.</span></p>
+    <ol class="days">
+      <li class="day travel"><div class="when"><b>9.1.</b><small><span class="de">Sa</span><span class="en">Sat</span></small></div><div class="what">
+        <h3><span class="de">Abflug</span><span class="en">Departure</span></h3><p><span class="de">Ab Nürnberg um 10:50, ab Brüssel am Vormittag.</span><span class="en">From Nuremberg at 10:50, from Brussels in the morning.</span></p>
+        <div class="chips"><span class="chip fix"><span class="de">Anreise</span><span class="en">Travel</span></span></div></div></li>
+      <li class="day"><div class="when"><b>10.1.</b><small><span class="de">So</span><span class="en">Sun</span></small></div><div class="what">
+        <h3><span class="de">Ankommen in Kampala</span><span class="en">Arriving in Kampala</span></h3><p><span class="de">Landung um 04:40, Transfer ins Hotel und erst mal schlafen. Am Nachmittag vielleicht der Tierpark in Entebbe oder einfach am Pool bleiben.</span><span class="en">Landing at 04:40, transfer to the hotel and some sleep first. In the afternoon maybe the wildlife centre in Entebbe, or just the pool.</span></p>
+        <div class="chips"><span class="chip fix"><span class="de">Transfer</span><span class="en">Transfer</span></span><span class="chip"><span class="de">Tierpark UWEC</span><span class="en">UWEC wildlife centre</span></span><span class="chip"><span class="de">Ausruhen</span><span class="en">Rest</span></span></div></div></li>
+      <li class="day"><div class="when"><b>11.1.</b><small><span class="de">Mo</span><span class="en">Mon</span></small></div><div class="what">
+        <h3><span class="de">Kampala entdecken</span><span class="en">Exploring Kampala</span></h3><p><span class="de">Königsgräber, Craft Market, abends Tanz und Musik im Ndere Centre. Oder nichts davon.</span><span class="en">Royal tombs, craft market, dance and music at the Ndere Centre in the evening. Or none of it.</span></p>
+        <div class="chips"><span class="chip"><span class="de">Kasubi-Gräber</span><span class="en">Kasubi Tombs</span></span><span class="chip"><span class="de">Craft Market</span><span class="en">Craft market</span></span><span class="chip"><span class="de">Ndere Centre</span><span class="en">Ndere Centre</span></span></div></div></li>
+      <li class="day travel"><div class="when"><b>12.1.</b><small><span class="de">Di</span><span class="en">Tue</span></small></div><div class="what">
+        <h3><span class="de">Fahrt zum Haus</span><span class="en">Drive to the house</span></h3><p><span class="de">Rund 4 bis 5 Stunden Fahrt plus Pausen, also ein voller Tag. Foto am Äquator in Kayabwe, unterwegs Obst, Gemüse und Fisch für das Abendessen kaufen.</span><span class="en">About 4 to 5 hours plus breaks, so a full day. Photo stop at the equator in Kayabwe, buying fruit, vegetables and fish for dinner on the way.</span></p>
+        <div class="chips"><span class="chip fix"><span class="de">Gemeinsam</span><span class="en">Together</span></span><span class="chip fix"><span class="de">Äquator</span><span class="en">Equator</span></span><span class="chip fix"><span class="de">Markt</span><span class="en">Market</span></span></div></div></li>
+      <li class="day"><div class="when"><b>13.1.</b><small><span class="de">Mi</span><span class="en">Wed</span></small></div><div class="what">
+        <h3><span class="de">Am Haus</span><span class="en">At the house</span></h3><p><span class="de">Ankommen, Garten, Kinder spielen lassen. Wer mag, kommt mit ins Heimatdorf der Familie.</span><span class="en">Settle in, enjoy the garden, let the kids play. Anyone who likes can join us to the family's home village.</span></p>
+        <div class="chips"><span class="chip"><span class="de">Heimatdorf</span><span class="en">Family village</span></span><span class="chip"><span class="de">Garten</span><span class="en">Garden</span></span></div></div></li>
+      <li class="day"><div class="when"><b>14.1.</b><small><span class="de">Do</span><span class="en">Thu</span></small></div><div class="what">
+        <h3><span class="de">Safari-Tag</span><span class="en">Safari day</span></h3><p><span class="de">Lake-Mburo-Nationalpark: Zebras, Impalas, Büffel, Bootsfahrt mit Nilpferden. Gut mit Kindern machbar.</span><span class="en">Lake Mburo National Park: zebras, impalas, buffalo and a boat trip with hippos. Works well with kids.</span></p>
+        <div class="chips"><span class="chip"><span class="de">Lake Mburo</span><span class="en">Lake Mburo</span></span></div></div></li>
+      <li class="day"><div class="when"><b>15.1.</b><small><span class="de">Fr</span><span class="en">Fri</span></small></div><div class="what">
+        <h3><span class="de">Dörfer und Schule</span><span class="en">Villages and school</span></h3><p><span class="de">Besuch bei der Tante im Dorf, eventuell eine Schule.</span><span class="en">Visiting our aunt in her village, possibly a school.</span></p>
+        <div class="chips"><span class="chip"><span class="de">Dorf der Tante</span><span class="en">Aunt's village</span></span><span class="chip"><span class="de">Schulbesuch</span><span class="en">School visit</span></span></div></div></li>
+      <li class="day"><div class="when"><b>16.1.</b><small><span class="de">Sa</span><span class="en">Sat</span></small></div><div class="what">
+        <h3><span class="de">Grillfest im Garten</span><span class="en">Barbecue in the garden</span></h3><p><span class="de">Spiele, Grill, ein ruhiger Tag am Haus, bevor es zurückgeht.</span><span class="en">Games, barbecue and a slow day at the house before heading back.</span></p>
+        <div class="chips"><span class="chip"><span class="de">Grillfest</span><span class="en">Barbecue</span></span><span class="chip"><span class="de">Spiele</span><span class="en">Games</span></span></div></div></li>
+      <li class="day travel"><div class="when"><b>17.1.</b><small><span class="de">So</span><span class="en">Sun</span></small></div><div class="what">
+        <h3><span class="de">Zurück an den Viktoriasee</span><span class="en">Back to Lake Victoria</span></h3><p><span class="de">Rückfahrt und Ankommen im Lake Victoria Serena Resort. Als Kontrast zum Matratzenlager.</span><span class="en">Drive back and check in at the Lake Victoria Serena Resort. A little contrast to the mattress camp.</span></p>
+        <div class="chips"><span class="chip fix"><span class="de">Gemeinsam</span><span class="en">Together</span></span><span class="chip"><span class="de">Serena</span><span class="en">Serena</span></span></div></div></li>
+      <li class="day"><div class="when"><b>18.1.</b><small><span class="de">Mo</span><span class="en">Mon</span></small></div><div class="what">
+        <h3><span class="de">Letzter Tag am See</span><span class="en">Last day by the lake</span></h3><p><span class="de">Pool, See, Spa oder Golf. Früh schlafen gehen, die Nacht ist kurz.</span><span class="en">Pool, lake, spa or golf. Early night, it's a short one.</span></p>
+        <div class="chips"><span class="chip"><span class="de">Serena</span><span class="en">Serena</span></span><span class="chip"><span class="de">Ausruhen</span><span class="en">Rest</span></span></div></div></li>
+      <li class="day travel"><div class="when"><b>19.1.</b><small><span class="de">Di</span><span class="en">Tue</span></small></div><div class="what">
+        <h3><span class="de">Heimflug</span><span class="en">Flight home</span></h3><p><span class="de">Abfahrt gegen 2:30 Uhr, Abflug 05:55. Am Abend seid ihr zu Hause. Wer weiterreist, startet von hier.</span><span class="en">Leaving around 2:30, flight at 05:55. Home by the evening. Anyone travelling on starts from here.</span></p>
+        <div class="chips"><span class="chip fix"><span class="de">Abflug</span><span class="en">Departure</span></span><span class="chip"><span class="de">oder Verlängerung</span><span class="en">or extension</span></span></div></div></li>
+    </ol>
+    <p style="margin-top:1rem"><span class="de">Die Reihenfolge der Tage am Haus ist flexibel. Wir schieben sie so, wie es für alle passt.</span><span class="en">The order of the days at the house is flexible. We'll shuffle them to suit everyone.</span></p>
+  </div>
+</section>
+
+<section id="bausteine">
+  <div class="wrap">
+    <h2><span class="de">Ausflüge zur Auswahl</span><span class="en">Trips to choose from</span></h2>
+    <p class="lead"><span class="de">Nichts davon ist Pflicht. Die Fahrzeiten sind grobe Richtwerte.</span><span class="en">None of it is compulsory. Travel times are rough estimates.</span></p>
+    <div class="group">
+      <h3><span class="de">Kampala und Entebbe</span><span class="en">Kampala and Entebbe</span></h3>
+      <div class="opts">
+<div class="opt"><h3><span class="de">Kasubi-Königsgräber</span><span class="en">Kasubi Tombs</span></h3><p><span class="de">UNESCO-Welterbe, die Grabstätte der Könige von Buganda. Geführte Tour.</span><span class="en">UNESCO World Heritage site, burial ground of the kings of Buganda. Guided tour.</span></p><div class="meta"><span><span class="de">1 bis 2 Std.</span><span class="en">1 to 2 hrs</span></span><span class="kids"><span class="de">mit Kindern ok</span><span class="en">fine with kids</span></span></div></div>
+<div class="opt"><h3><span class="de">Craft Market</span><span class="en">Craft market</span></h3><p><span class="de">Kunsthandwerk, Stoffe, Körbe. Handeln gehört dazu.</span><span class="en">Crafts, fabrics, baskets. Haggling is part of the fun.</span></p><div class="meta"><span><span class="de">1 bis 2 Std.</span><span class="en">1 to 2 hrs</span></span><span class="kids"><span class="de">mit Kindern ok</span><span class="en">fine with kids</span></span></div></div>
+<div class="opt"><h3><span class="de">Uganda Wildlife Education Centre</span><span class="en">Uganda Wildlife Education Centre</span></h3><p><span class="de">Tierauffangstation in Entebbe mit Schimpansen, Löwen, Schuhschnabel.</span><span class="en">Wildlife rescue centre in Entebbe with chimps, lions and the shoebill.</span></p><div class="meta"><span><span class="de">2 bis 3 Std.</span><span class="en">2 to 3 hrs</span></span><span class="kids"><span class="de">ideal für Kinder</span><span class="en">great for kids</span></span></div></div>
+<div class="opt"><h3><span class="de">Ndere Centre</span><span class="en">Ndere Centre</span></h3><p><span class="de">Abendprogramm mit Tänzen und Musik aus ganz Uganda.</span><span class="en">Evening show with dance and music from all over Uganda.</span></p><div class="meta"><span><span class="de">Abend</span><span class="en">Evening</span></span><span class="kids"><span class="de">mit Kindern ok</span><span class="en">fine with kids</span></span></div></div>
+<div class="opt"><h3><span class="de">Märtyrerschrein Namugongo</span><span class="en">Namugongo Martyrs Shrine</span></h3><p><span class="de">Wichtiger Pilgerort am Stadtrand, besondere Architektur.</span><span class="en">Major pilgrimage site on the edge of town, striking architecture.</span></p><div class="meta"><span><span class="de">1 Std.</span><span class="en">1 hr</span></span><span class="kids"><span class="de">mit Kindern ok</span><span class="en">fine with kids</span></span></div></div>
+<div class="opt"><h3><span class="de">Bahá'í-Tempel</span><span class="en">Bahá'í Temple</span></h3><p><span class="de">Ruhiger Tempel auf einem Hügel, schöner Blick über die Stadt.</span><span class="en">Peaceful temple on a hill with a great view over the city.</span></p><div class="meta"><span><span class="de">1 Std.</span><span class="en">1 hr</span></span><span class="kids"><span class="de">mit Kindern ok</span><span class="en">fine with kids</span></span></div></div>
+      </div>
+    </div>
+    <div class="group">
+      <h3><span class="de">Rund ums Haus bei Mbarara</span><span class="en">Around the house near Mbarara</span></h3>
+      <div class="opts">
+<div class="opt"><h3><span class="de">Lake-Mburo-Nationalpark</span><span class="en">Lake Mburo National Park</span></h3><p><span class="de">Pirschfahrt und Bootsfahrt. Etwa eine Stunde vom Haus entfernt.</span><span class="en">Game drive and boat trip. About an hour from the house.</span></p><div class="meta"><span><span class="de">ganzer Tag</span><span class="en">full day</span></span><span class="kids"><span class="de">mit Kindern ok</span><span class="en">fine with kids</span></span></div></div>
+<div class="opt"><h3><span class="de">Heimatdorf der Familie</span><span class="en">The family's home village</span></h3><p><span class="de">Familie, Felder und das echte Landleben.</span><span class="en">Family, fields and real village life.</span></p><div class="meta"><span><span class="de">halber Tag</span><span class="en">half day</span></span><span class="kids"><span class="de">mit Kindern ok</span><span class="en">fine with kids</span></span></div></div>
+<div class="opt"><h3><span class="de">Dorf der Tante</span><span class="en">Our aunt's village</span></h3><p><span class="de">Besuch bei der Familie, meist mit Essen.</span><span class="en">Visiting family, usually with food.</span></p><div class="meta"><span><span class="de">halber Tag</span><span class="en">half day</span></span><span class="kids"><span class="de">mit Kindern ok</span><span class="en">fine with kids</span></span></div></div>
+<div class="opt"><h3><span class="de">Schulbesuch</span><span class="en">School visit</span></h3><p><span class="de">Stimmen wir vorher mit der Schulleitung ab. Im Januar sind in Uganda meist noch Ferien, das klären wir. Fotos von Kindern nur nach Rückfrage.</span><span class="en">We'll arrange it with the head teacher first. Schools in Uganda are often still on holiday in January, we'll check. Photos of children only after asking.</span></p><div class="meta"><span><span class="de">2 Std.</span><span class="en">2 hrs</span></span><span class="kids"><span class="de">mit Kindern ok</span><span class="en">fine with kids</span></span></div></div>
+<div class="opt"><h3><span class="de">Grillfest und Spiele</span><span class="en">Barbecue and games</span></h3><p><span class="de">Garten, Grill und Zeit miteinander.</span><span class="en">Garden, grill and time together.</span></p><div class="meta"><span><span class="de">ganzer Tag</span><span class="en">full day</span></span><span class="kids"><span class="de">mit Kindern ok</span><span class="en">fine with kids</span></span></div></div>
+      </div>
+    </div>
+    <div class="group">
+      <h3><span class="de">Für alle, die länger bleiben</span><span class="en">For those staying longer</span></h3>
+      <p><span class="de">Diese Ideen passen nicht in die zehn Tage. Ihr plant und bucht sie selbst.</span><span class="en">These don't fit into the ten days. You plan and book them yourselves.</span></p>
+      <div class="opts">
+<div class="opt"><h3><span class="de">Rafting auf dem Nil in Jinja</span><span class="en">Rafting the Nile in Jinja</span></h3><p><span class="de">Östlich von Kampala, nicht als Tagesausflug ab Mbarara. Wildwasser meist erst für Jugendliche, für Familien gibt es ruhige Bootstouren.</span><span class="en">East of Kampala, not a day trip from Mbarara. White water is usually for teens and up, families can do calm boat trips.</span></p><div class="meta"><span><span class="de">1 bis 2 Tage</span><span class="en">1 to 2 days</span></span><span class="nokids"><span class="de">Wildwasser nicht für Kinder</span><span class="en">white water not for kids</span></span></div></div>
+<div class="opt"><h3><span class="de">Gorillas im Bwindi-Nationalpark</span><span class="en">Gorillas in Bwindi</span></h3><p><span class="de">Einmalig. Genehmigungen sind knapp und früh ausgebucht, Mindestalter 15.</span><span class="en">Once in a lifetime. Permits are limited and sell out early, minimum age 15.</span></p><div class="meta"><span><span class="de">2 bis 3 Tage</span><span class="en">2 to 3 days</span></span><span class="nokids"><span class="de">nicht für Kinder</span><span class="en">not for kids</span></span></div></div>
+<div class="opt"><h3><span class="de">Queen-Elizabeth-Nationalpark</span><span class="en">Queen Elizabeth National Park</span></h3><p><span class="de">Bootsfahrt auf dem Kazinga-Kanal, Elefanten, Nilpferde, mit Glück Baumlöwen.</span><span class="en">Boat trip on the Kazinga Channel, elephants, hippos and, with luck, tree-climbing lions.</span></p><div class="meta"><span><span class="de">2 Tage</span><span class="en">2 days</span></span><span class="kids"><span class="de">mit Kindern ok</span><span class="en">fine with kids</span></span></div></div>
+<div class="opt"><h3><span class="de">Tansania</span><span class="en">Tanzania</span></h3><p><span class="de">Serengeti, Kilimandscharo oder Strand auf Sansibar.</span><span class="en">Serengeti, Kilimanjaro or the beaches of Zanzibar.</span></p><div class="meta"><span><span class="de">ab 4 Tagen</span><span class="en">4 days +</span></span></div></div>
+<div class="opt"><h3><span class="de">Diani Beach, Kenia</span><span class="en">Diani Beach, Kenya</span></h3><p><span class="de">Weißer Strand und einer der besten Kitespots Ostafrikas.</span><span class="en">White sand and one of East Africa's best kitesurfing spots.</span></p><div class="meta"><span><span class="de">ab 4 Tagen</span><span class="en">4 days +</span></span><span class="kids"><span class="de">mit Kindern ok</span><span class="en">fine with kids</span></span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="schlafen">
+  <div class="wrap">
+    <h2><span class="de">Wo wir schlafen</span><span class="en">Where we sleep</span></h2>
+    <div class="split">
+      <div class="box">
+        <h3><span class="de">Kampala, 2 Nächte</span><span class="en">Kampala, 2 nights</span></h3>
+        <p><span class="ph"><span class="de">Hotelname folgt</span><span class="en">Hotel name to follow</span></span></p>
+        <p><a href="https://maps.app.goo.gl/4ri5xvxFuQnsCq636" target="_blank" rel="noopener"><span class="de">Auf Google Maps ansehen</span><span class="en">View on Google Maps</span></a></p>
+        <p><span class="de">Wir landen um 04:40. Wir versuchen, für alle einen frühen Check-in zu organisieren.</span><span class="en">We land at 04:40. We'll try to arrange an early check-in for everyone.</span></p>
+      </div>
+      <div class="box">
+        <h3><span class="de">Mbarara, 5 Nächte</span><span class="en">Mbarara, 5 nights</span></h3>
+        <p><span class="de"><b>Im Haus:</b> drei große Schlafzimmer, eines davon für unsere Eltern. Der Rest ist Matratzenlager, wirklich. Es ist gemütlich.</span><span class="en"><b>At the house:</b> three big bedrooms, one of them for our parents. Everyone else sleeps mattress-camp style, really. It's cosy.</span></p>
+        <p><span class="de"><b>Oder im Hotel:</b></span><span class="en"><b>Or a hotel:</b></span> <span class="ph"><span class="de">Hotel 1 folgt</span><span class="en">Hotel 1 to follow</span></span> <span class="de">oder</span><span class="en">or</span> <span class="ph"><span class="de">Hotel 2 folgt</span><span class="en">Hotel 2 to follow</span></span></p>
+      </div>
+      <div class="box">
+        <h3><span class="de">Viktoriasee, 2 Nächte</span><span class="en">Lake Victoria, 2 nights</span></h3>
+        <p>Lake Victoria Serena Golf Resort &amp; Spa</p>
+        <p><a href="https://www.serenahotels.com/lake-victoria" target="_blank" rel="noopener"><span class="de">Zur Website</span><span class="en">Website</span></a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="checkliste">
+  <div class="wrap">
+    <h2><span class="de">Checkliste</span><span class="en">Checklist</span></h2>
+    <p class="lead"><span class="de">Die Häkchen sind nur für euch und werden nicht gespeichert. Medizinisches klärt bitte in der Reise- und Impfberatung.</span><span class="en">The ticks are just for you and aren't saved. Please sort out anything medical at a travel clinic.</span></p>
+    <div class="check">
+      <h3><span class="de">Dokumente</span><span class="en">Documents</span></h3>
+      <div class="item"><input type="checkbox" id="c1"><label for="c1"><b><span class="de">Reisepass für jede Person</span><span class="en">Passport for everyone</span></b><span><span class="de">Noch mindestens 6 Monate gültig, mit freien Seiten. Auch für Kinder. Ein regulärer Kinderpass ist sicherer als ein Kinderreisepass.</span><span class="en">Valid for at least 6 more months, with blank pages. Kids too.</span></span></label></div>
+      <div class="item"><input type="checkbox" id="c2"><label for="c2"><b><span class="de">E-Visum Uganda</span><span class="en">Uganda e-visa</span></b><span><span class="de">Online vorab beantragen. Wer nach Kenia oder Ruanda weiterreist, prüft das East Africa Tourist Visa.</span><span class="en">Apply online in advance. If you're continuing to Kenya or Rwanda, check the East Africa Tourist Visa.</span></span></label></div>
+      <div class="item"><input type="checkbox" id="c3"><label for="c3"><b><span class="de">Gelbfieber-Nachweis</span><span class="en">Yellow fever certificate</span></b><span><span class="de">Wird bei der Einreise kontrolliert, auch bei Kindern. Impfpass ins Handgepäck.</span><span class="en">Checked on arrival, kids included. Keep it in your hand luggage.</span></span></label></div>
+      <div class="item"><input type="checkbox" id="c4"><label for="c4"><b><span class="de">Auslandskrankenversicherung</span><span class="en">Travel health insurance</span></b><span><span class="de">Mit Rücktransport. Kopie der Police und die Notfallnummer griffbereit.</span><span class="en">Including medical repatriation. Keep the policy and emergency number handy.</span></span></label></div>
+      <div class="item"><input type="checkbox" id="c5"><label for="c5"><b><span class="de">Reisen Kinder nur mit einem Elternteil?</span><span class="en">Kids travelling with one parent only?</span></b><span><span class="de">Dann eine Einverständniserklärung des anderen Elternteils und eine Kopie der Geburtsurkunde mitnehmen.</span><span class="en">Bring a consent letter from the other parent and a copy of the birth certificate.</span></span></label></div>
+      <div class="item"><input type="checkbox" id="c6"><label for="c6"><b><span class="de">Kopien</span><span class="en">Copies</span></b><span><span class="de">Pass, Visum, Impfpass und Versicherung als Foto auf dem Handy und einmal ausgedruckt.</span><span class="en">Passport, visa, vaccination card and insurance as photos on your phone and on paper.</span></span></label></div>
+      <h3><span class="de">Gesundheit</span><span class="en">Health</span></h3>
+      <div class="item"><input type="checkbox" id="c7"><label for="c7"><b><span class="de">Impfberatung besucht</span><span class="en">Travel clinic visit</span></b><span><span class="de">Am besten 6 bis 8 Wochen vor Abflug, also bis spätestens Mitte November.</span><span class="en">Ideally 6 to 8 weeks before departure, so by mid-November.</span></span></label></div>
+      <div class="item"><input type="checkbox" id="c8"><label for="c8"><b><span class="de">Malariaschutz</span><span class="en">Malaria protection</span></b><span><span class="de">Prophylaxe nach ärztlicher Empfehlung, dazu Mückenschutz für Erwachsene und Kinder, lange Kleidung am Abend.</span><span class="en">Prophylaxis as advised by your doctor, repellent for adults and kids, long sleeves in the evening.</span></span></label></div>
+      <div class="item"><input type="checkbox" id="c9"><label for="c9"><b><span class="de">Reiseapotheke</span><span class="en">First aid kit</span></b><span><span class="de">Fiebermittel, Elektrolyte, Pflaster, Sonnencreme, eigene Medikamente in ausreichender Menge.</span><span class="en">Fever medication, electrolytes, plasters, sunscreen, enough of your own medication.</span></span></label></div>
+      <div class="item"><input type="checkbox" id="c10"><label for="c10"><b><span class="de">Trinkwasser</span><span class="en">Drinking water</span></b><span><span class="de">Nur abgefülltes oder abgekochtes Wasser, auch zum Zähneputzen bei den Kleinen.</span><span class="en">Bottled or boiled water only, also for the little ones' teeth brushing.</span></span></label></div>
+      <h3><span class="de">Gepäck</span><span class="en">Packing</span></h3>
+      <div class="item"><input type="checkbox" id="c11"><label for="c11"><b><span class="de">Kindersitze</span><span class="en">Car seats</span></b><span><span class="de">In Uganda nicht selbstverständlich. Wer sie braucht, bringt am besten eigene mit oder sagt es uns rechtzeitig.</span><span class="en">Not a given in Uganda. Bring your own or let us know early.</span></span></label></div>
+      <div class="item"><input type="checkbox" id="c12"><label for="c12"><b><span class="de">Steckdosenadapter Typ G</span><span class="en">Type G plug adapter</span></b><span><span class="de">Der britische Stecker mit drei eckigen Stiften. Eine Powerbank für lange Fahrten hilft.</span><span class="en">The British three-pin plug. A power bank helps on long drives.</span></span></label></div>
+      <div class="item"><input type="checkbox" id="c13"><label for="c13"><b><span class="de">US-Dollar in bar</span><span class="en">US dollars in cash</span></b><span><span class="de">Neuere, unbeschädigte Scheine, sonst werden sie oft nicht angenommen. Vor Ort in Uganda-Schilling tauschen oder am Automaten abheben.</span><span class="en">Newer, undamaged notes, older ones are often refused. Change to Uganda shillings locally or use an ATM.</span></span></label></div>
+      <div class="item"><input type="checkbox" id="c14"><label for="c14"><b><span class="de">Kleidung</span><span class="en">Clothes</span></b><span><span class="de">Leicht und luftig, eine Jacke für die Abende. Für Dorf- und Schulbesuche Schultern und Knie bedeckt.</span><span class="en">Light and airy, a jacket for the evenings. Shoulders and knees covered for village and school visits.</span></span></label></div>
+      <div class="item"><input type="checkbox" id="c15"><label for="c15"><b><span class="de">Stirnlampe und Taschenlampe</span><span class="en">Head torch and flashlight</span></b><span><span class="de">Stromausfälle kommen vor.</span><span class="en">Power cuts happen.</span></span></label></div>
+      <div class="item"><input type="checkbox" id="c16"><label for="c16"><b><span class="de">Stoffbeutel statt Plastiktüten</span><span class="en">Cloth bags instead of plastic</span></b><span><span class="de">Dünne Plastiktüten sind in Uganda verboten.</span><span class="en">Thin plastic bags are banned in Uganda.</span></span></label></div>
+      <h3><span class="de">Vor Ort</span><span class="en">On the ground</span></h3>
+      <div class="item"><input type="checkbox" id="c17"><label for="c17"><b><span class="de">Fotos</span><span class="en">Photos</span></b><span><span class="de">Menschen vorher fragen. Keine Fotos von Militär, Polizei oder Regierungsgebäuden. Drohnen nur mit Genehmigung.</span><span class="en">Ask people first. No photos of military, police or government buildings. Drones only with a permit.</span></span></label></div>
+      <div class="item"><input type="checkbox" id="c18"><label for="c18"><b><span class="de">Nicht nachts fahren</span><span class="en">No driving at night</span></b><span><span class="de">Überlandfahrten planen wir bei Tageslicht.</span><span class="en">We plan all long drives in daylight.</span></span></label></div>
+    </div>
+  </div>
+</section>
+
+<section id="antwort">
+  <div class="wrap">
+    <h2><span class="de">Seid ihr dabei?</span><span class="en">Are you in?</span></h2>
+    <p class="lead"><span class="de">Dann kommt in unsere WhatsApp-Gruppe. Dort klären wir alles Weitere: Flüge, Ankunft, Schlafplätze und Ausflüge.</span><span class="en">Then join our WhatsApp group. That's where we'll sort out the rest: flights, arrival, beds and trips.</span></p>
+    <a class="wa" href="https://chat.whatsapp.com/DD7eLgmcy1Z0qCeDygE612" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3a.5.5 0 0 0 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.7a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3Z"/></svg><span class="de">WhatsApp-Gruppe beitreten</span><span class="en">Join the WhatsApp group</span></a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap"><span class="de">Stand: Entwurf, September 2026. Änderungen kommen direkt auf diese Seite, der Link bleibt gleich.</span><span class="en">Status: draft, September 2026. Updates go straight onto this page, the link stays the same.</span></div>
+</footer>
+
+<script>
+(function(){
+  var titles={de:"Uganda im Januar",en:"Uganda in January"};
+  function set(l){
+    document.documentElement.lang=l;
+    document.title=titles[l];
+    document.querySelectorAll('.lang button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.lang===l?'true':'false');});
+    try{localStorage.setItem('uganda-lang',l);}catch(e){}
+  }
+  var l=null;
+  try{l=localStorage.getItem('uganda-lang');}catch(e){}
+  if(!l){l=(navigator.language||'de').toLowerCase().indexOf('de')===0?'de':'en';}
+  set(l);
+  document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){set(b.dataset.lang);});});
+})();
+</script>
+</body>
+</html>
